@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by Administrator on 2017/5/9.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
 
     private static final int DEFAULT_CONTENT_VIEW_ID = -1;
 
@@ -25,9 +25,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         initWidget();
     }
 
-    protected abstract int getContentViewId();
+    protected int getContentViewId() {
+        return DEFAULT_CONTENT_VIEW_ID;
+    }
 
-    protected abstract void initWidget();
+    ;
+
+    protected void initWidget() {
+    }
+
+    ;
 
     /**
      * 启动Activity
