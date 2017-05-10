@@ -14,7 +14,7 @@ import android.view.ViewGroup;
  * Created by Administrator on 2017/5/10.
  */
 
-public abstract class BaseFragment extends Fragment {
+public class BaseFragment extends Fragment {
 
     protected static final int DEFAULT_CONTENT_VIEW_ID = -1;
     private Context context;
@@ -43,9 +43,16 @@ public abstract class BaseFragment extends Fragment {
         return mRootView;
     }
 
-    protected abstract int getContentViewId();
+    protected int getContentViewId() {
+        return DEFAULT_CONTENT_VIEW_ID;
+    }
 
-    protected abstract void initWidget();
+    ;
+
+    protected void initWidget() {
+    }
+
+    ;
 
     /**
      * 启动Activity
