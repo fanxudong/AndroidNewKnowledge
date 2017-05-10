@@ -18,6 +18,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected static final int DEFAULT_CONTENT_VIEW_ID = -1;
     private Context context;
+    private View mRootView;
 
     @Override
     public void onAttach(Context context) {
@@ -28,6 +29,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initWidget();
     }
 
     @Nullable
@@ -37,19 +39,22 @@ public abstract class BaseFragment extends Fragment {
         if (contentViewId == DEFAULT_CONTENT_VIEW_ID) {
             throw new RuntimeException("No such a layout");
         }
-        return inflater.inflate(contentViewId, container, false);
+        mRootView = inflater.inflate(contentViewId, container, false);
+        return mRootView;
     }
 
     protected abstract int getContentViewId();
+
+    protected abstract void initWidget();
 
     /**
      * 启动Activity
      *
      * @param bundle：携带的参数
-     * @param BaseActivity：需要跳转的Activity
+     * @param baseActivityClass：需要跳转的Activity
      */
-    private void startActivity(Bundle bundle, Class BaseActivity) {
-        Intent intent = new Intent(context, BaseActivity.class);
+    private void startActivity(Bundle bundle, Class<BaseActivity> baseActivityClass) {
+        Intent intent = new Intent(context, baseActivityClass);
         intent.putExtra("bundle", bundle);
         startActivity(intent);
     }
@@ -58,12 +63,12 @@ public abstract class BaseFragment extends Fragment {
      * 带动画启动Activity
      *
      * @param bundle:携带的参数
-     * @param BaseActivity：需要跳转的Activity
+     * @param baseActivityClass：需要跳转的Activity
      * @param enterAnim：进入的动画
      * @param exitAnim：退出的动画
      */
-    private void startActivityWithAnim(Bundle bundle, Class BaseActivity, int enterAnim, int exitAnim) {
-        startActivity(bundle, BaseActivity);
+    private void startActivityWithAnim(Bundle bundle, Class<BaseActivity> baseActivityClass, int enterAnim, int exitAnim) {
+        startActivity(bundle, baseActivityClass);
         ((Activity) context).overridePendingTransition(enterAnim, exitAnim);
     }
 }

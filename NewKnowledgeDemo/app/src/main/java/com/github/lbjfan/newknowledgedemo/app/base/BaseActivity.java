@@ -22,6 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             throw new RuntimeException("No such layout id");
         }
         setContentView(getContentViewId());
+        initWidget();
     }
 
     protected abstract int getContentViewId();
