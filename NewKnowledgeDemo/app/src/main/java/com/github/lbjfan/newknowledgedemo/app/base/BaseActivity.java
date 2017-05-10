@@ -12,15 +12,21 @@ import android.support.v7.app.AppCompatActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    private static final int DEFAULT_CONTENT_VIEW_ID = -1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getContentViewId() != -1) {
-            setContentView(getContentViewId());
+        int contentViewId = getContentViewId();
+        if (contentViewId == DEFAULT_CONTENT_VIEW_ID) {
+            throw new RuntimeException("No such layout id");
         }
+        setContentView(getContentViewId());
     }
 
     protected abstract int getContentViewId();
+
+    protected abstract void initWidget();
 
     /**
      * 启动Activity
