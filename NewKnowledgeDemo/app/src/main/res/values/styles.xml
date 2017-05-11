@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <declare-styleable name="ProgressCircleView">
+        <attr name="mTextColor" format="color"></attr>
+        <attr name="mTextSize" format="dimension"></attr>
+        <attr name="mSmallBgColor" format="color"></attr>
+        <attr name="mLargeBgColor" format="color"></attr>
+        <attr name="mStripeWidth" format="dimension"></attr>
+        <attr name="mRadius" format="dimension"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="AdTimePickView">
+        <attr name="mSmallCircleBg" format="color"></attr>
+        <attr name="mTextSize1" format="dimension"></attr>
+        <attr name="mTextColor1" format="color"></attr>
+        <attr name="mProgressWidth" format="dimension"></attr>
+        <attr name="mRadius1" format="dimension"></attr>
+    </declare-styleable>
+
 </resources>
